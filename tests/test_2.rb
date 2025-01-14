@@ -27,7 +27,7 @@ class Card
     "#{@title} is worth #{@value}"
   end
 end
-
+# Check odds
 x = [Card.new("steve", 4.2), Card.new("Drew", 6.3), Card.new("Race", 10.5), Card.new("Kyle", 5), Card.new("Drew", 6.2), Card.new("Drew", 6.3), Card.new("Drew", 6.3),]
 sum = 0
 match = 0

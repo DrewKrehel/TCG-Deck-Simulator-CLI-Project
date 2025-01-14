@@ -57,8 +57,36 @@ class Deck
     name = gets.chomp.to_s
     print "Enter $value name: "
     $value = gets.chomp.to_f
-    @cards << Card.new(name, $value)
+    print "Enter card quantity:"
+    quantity = gets.chomp.to_i
+    quantity.times do
+      @cards << Card.new(name, $value)
+    end
     puts "card added successfully!"
+  end
+
+  def remove_card
+    puts "\n"
+      puts "1. Remove a single card"
+      puts "2. Remove each card of a specific name"
+      choice = gets.chomp.to_i
+      case choice
+      when 1
+        list_cards
+        puts "\n"
+        print "Enter card position: "
+        position = gets.chomp.to_i - 1
+        @cards.delete_at(position)
+      when 2
+        print "Enter card name: "
+        name = gets.chomp
+        @cards.each {|card|
+          if cards.match_name == name
+            @cards.delete(card)
+            puts "#{name} removed from deck!"
+          end
+        }
+      end
   end
 
   def remove_card
@@ -74,8 +102,8 @@ class Deck
 
   def list_cards
     puts "cards in the collection:"
-    @cards.each do |card|
-      puts card
+    @cards.each_with_index do |card, count|
+      puts "#{count+1}: #{card}"
     end
   end
 

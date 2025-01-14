@@ -17,16 +17,10 @@ class Card
   def to_s
     "#{@title} is worth #{@value}"
   end
-
-  def num_list
-    x = 0
-    x = x+1
-    "#{x} #{@title}"
-  end
 end
-
+# Better list_cards
 x = [Card.new("steve", 4.2), Card.new("Drew", 6.3), Card.new("Race", 10.5), Card.new("Kyle", 5), Card.new("Drew", 6.2), Card.new("Drew", 6.3), Card.new("Drew", 6.3),]
-y = 0
-y = y+1
-puts "\n"
-puts x 
+puts "cards in the collection:"
+x.each_with_index do |card, count|
+  puts "#{count+1}: #{card}"
+end
