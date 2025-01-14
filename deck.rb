@@ -139,22 +139,25 @@ class Deck
     puts "Your hand includes: "
     puts hand
     puts "\n"
-    puts "1. Draw another card?"
-    puts "2. Return hand to deck"
-    choice = gets.chomp.to_i
-    case choice
-    when 1
-      hand << @cards.first
-      @cards.delete_at(0)
-      puts "\n"
-      puts "Your hand includes: "
-      puts hand
-    when 2
-      @cards << hand
-      hand = []
-      puts "\n"
-      puts "Your hand includes: "
-      puts hand
+    loop do
+      puts "1. Draw another card?"
+      puts "2. Return hand to deck"
+      choice = gets.chomp.to_i
+      case choice
+      when 1
+        hand << @cards.first
+        @cards.delete_at(0)
+        puts "\n"
+        puts "Your hand includes: "
+        puts hand
+      when 2
+        @cards << hand
+        hand = []
+        puts "\n"
+        puts "Your hand includes: "
+        puts hand
+        break
+      end
     end
   end
 
