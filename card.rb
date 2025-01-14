@@ -15,6 +15,8 @@ class Card
   end
 
   def to_s
-    "#{@title} is worth #{@value}"
+    return @title
+    # "#{@title} is worth #{@value}"
   end
+
 end

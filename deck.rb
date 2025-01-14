@@ -82,19 +82,22 @@ class Deck
       when 2
         print "Enter card name: "
         name = gets.chomp.downcase
-        @cards.each {|card|
+        @cards.each_with_index {|card, count|
           if card.match_name.downcase == name
             @cards.delete(card)
-            puts "#{name} removed from deck!"
           end
+          puts "#{name} removed from the deck #{count} times!"
         }
+        else
+          puts "Invalid option. Please try again."
+        end
       end
   end
 
   def list_cards
     puts "cards in the collection:"
     @cards.each_with_index do |card, count|
-      puts "#{count+1}: #{card}"
+      puts "#{count+1}: #{card.to_s} is worth #{card.show_value}"
     end
   end
 
@@ -155,6 +158,9 @@ class Deck
         puts hand
         puts "The deck has #{@cards.count} cards in it."
         break
+      end
+      else
+        puts "Invalid option. Please try again."
       end
     end
   end
