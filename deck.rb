@@ -80,13 +80,12 @@ class Deck
   def check_odds
     print "Enter card name: "
     name = gets.chomp
+    match = 0
     @cards.each {|card|
-      sum = 0
-      if card.match_name == name
-        sum += 1
+      if card.match_name == "Drew"
+        match = match + 1
       end
-      return sum
     }
-    puts card_odds = @cards.count / sum
+    puts "#{name} has a #{match.percent_of x.count} odds of being drawn!"
   end
 end
