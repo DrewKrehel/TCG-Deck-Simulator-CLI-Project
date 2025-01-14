@@ -1,5 +1,5 @@
 require 'minitest/autorun'
-require_relative "card"
+require './card'
 
 class TestCard < Minitest::Test
   def setup
@@ -7,6 +7,6 @@ class TestCard < Minitest::Test
   end
 
   def test_input
-    assert_equal "Drew", @card.match_name, "No match!"
+    assert_equal "Ed", @card.match_name, "No match!"
   end
 end
