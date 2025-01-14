@@ -6,9 +6,13 @@ class Card
     @value = value
   end
 
-  #def match_name
-  #  "#{title}"
-  #end
+  def match_name
+    "#{title}"
+  end
+  
+  def show_value
+    return @value
+  end
 
   def to_s
     "#{@title} is worth #{@value}"

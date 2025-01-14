@@ -44,9 +44,9 @@ class Deck
 
   def add_card
     print "Enter card name: "
-    name = gets.chomp
+    name = gets.chomp.to_s
     print "Enter $value name: "
-    $value = gets.chomp
+    $value = gets.chomp.to_f
     @cards << Card.new(name, $value)
     puts "card added successfully!"
   end
@@ -54,8 +54,8 @@ class Deck
   def remove_card
     print "Enter card name: "
     name = gets.chomp
-    @cards each {|card|
-      if @cards.at(card)[:title] == name
+    @cards.each {|card|
+      if cards.match_name == name
         @cards.delete(card)
         puts "#{name} removed from deck!"
       end
@@ -67,5 +67,26 @@ class Deck
     @cards.each do |card|
       puts card
     end
+  end
+
+  def evaluate_deck
+    sum = 0
+    @cards.each {|card|
+    sum = sum + card.show_value
+    }
+    puts sum
+  end
+
+  def check_odds
+    print "Enter card name: "
+    name = gets.chomp
+    @cards.each {|card|
+      sum = 0
+      if card.match_name == name
+        sum += 1
+      end
+      return sum
+    }
+    puts card_odds = @cards.count / sum
   end
 end
