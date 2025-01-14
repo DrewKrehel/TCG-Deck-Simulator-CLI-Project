@@ -17,10 +17,4 @@ class Card
   def to_s
     "#{@title} is worth #{@value}"
   end
-  
-  def num_list
-    x = 0
-    x = x+1
-    "#{x} #{@title}"
-  end
 end

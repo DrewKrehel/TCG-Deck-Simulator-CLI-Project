@@ -1,3 +1,4 @@
+require "minitest"
 require_relative "card"
 
 class Numeric
@@ -50,7 +51,7 @@ class Deck
     end
   end
 
-  private
+  #private
 
   def add_card
     print "Enter card name: "
@@ -62,7 +63,7 @@ class Deck
     quantity.times do
       @cards << Card.new(name, $value)
     end
-    puts "card added successfully!"
+    puts "card(s) added successfully!"
   end
 
   def remove_card
@@ -76,28 +77,18 @@ class Deck
         puts "\n"
         print "Enter card position: "
         position = gets.chomp.to_i - 1
+        puts "One copy of #{@cards.at(position)} has been removed!"
         @cards.delete_at(position)
       when 2
         print "Enter card name: "
-        name = gets.chomp
+        name = gets.chomp.downcase
         @cards.each {|card|
-          if cards.match_name == name
+          if card.match_name.downcase == name
             @cards.delete(card)
             puts "#{name} removed from deck!"
           end
         }
       end
-  end
-
-  def remove_card
-    print "Enter card name: "
-    name = gets.chomp
-    @cards.each {|card|
-      if cards.match_name == name
-        @cards.delete(card)
-        puts "#{name} removed from deck!"
-      end
-    }
   end
 
   def list_cards
@@ -112,7 +103,7 @@ class Deck
     @cards.each {|card|
     sum = sum + card.show_value
     }
-    puts sum
+    puts "Youre deck is worth #{sum.round(3)}!"
   end
 
   def check_odds
@@ -120,15 +111,17 @@ class Deck
     name = gets.chomp
     match = 0
     @cards.each {|card|
-      if card.match_name == "Drew"
+      if card.match_name == name
         match = match + 1
       end
     }
-    puts "#{name} has a #{match.percent_of x.count} odds of being drawn!"
+    result = match.percent_of @cards.count
+    puts "#{name} has a #{result.round(3)} odds of being drawn!"
   end
 
   def shuffle_deck
-    @cards.shuffle
+    @cards = @cards.shuffle
+    puts "Your deck has been shuffled."
   end
 
   def draw_cards
@@ -141,7 +134,8 @@ class Deck
     puts "\n"
     loop do
       puts "1. Draw another card?"
-      puts "2. Return hand to deck"
+      puts "2. Shuffle deck"
+      puts "3. Return hand to deck"
       choice = gets.chomp.to_i
       case choice
       when 1
@@ -151,11 +145,15 @@ class Deck
         puts "Your hand includes: "
         puts hand
       when 2
+        shuffle_deck
+      when 3
         @cards << hand
         hand = []
+        @cards = @cards.flatten
         puts "\n"
         puts "Your hand includes: "
         puts hand
+        puts "The deck has #{@cards.count} cards in it."
         break
       end
     end
