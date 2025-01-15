@@ -4,7 +4,7 @@ require './card'
 
 class TestCard < Minitest::Test
   def setup
-    @card = Card.new("Drew", 6.3)
+    @card = Card.new("Ed", 6.3)
   end
 
   def test_input
