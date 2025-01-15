@@ -1,6 +1,6 @@
 require 'minitest/autorun'
 require './card'
-require './deck'
+
 
 class TestCard < Minitest::Test
   def setup
@@ -11,14 +11,3 @@ class TestCard < Minitest::Test
     assert_equal "Ed", @card.match_name, "No match!"
   end
 end
-
-class TestCard < Minitest::Test
-  def setup
-    @deck = deck.new
-  end
-
-  def test_card
-    assert_equal "Ed", @card.match_name, "No match!"
-  end
-end
-

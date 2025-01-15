@@ -12,6 +12,10 @@ class Deck
     @cards = []
   end
 
+  def cards_count
+    @cards.count
+  end
+
   def run
     loop do
       puts "\n"
@@ -53,11 +57,13 @@ class Deck
 
   #private
 
-  def add_card
+  def add_card(card)
     print "Enter card name: "
     name = gets.chomp.to_s
+    name = "default" if name == 0
     print "Enter $value name: "
     $value = gets.chomp.to_f
+    $value = 123 if $value == 0
     print "Enter card quantity:"
     quantity = gets.chomp.to_i
     quantity = 1 if quantity == 0

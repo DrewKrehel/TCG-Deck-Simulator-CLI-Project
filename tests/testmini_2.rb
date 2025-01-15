@@ -4,10 +4,21 @@ require_relative "../card"
 
 class TestDeck < Minitest::Test
 
+ # def test_add_card
+ #   @deck = Deck.new
+ #   @deck.add_card(Card.new("title", "value"))
+ #   assert_equal deck.quantity, @deck.cards_count
+ # end
+ # def test_add_card
+ #   @deck = Deck.new
+ #   @deck.add_card
+  #  assert_equal 2, @deck.cards_count
+  #end
+  
   def test_add_card
     @deck = Deck.new
-    @deck.add_card(Card.new("Ace of Spades", 1))
-    @deck.add_card(Card.new("King of Hearts", 10))
+    @deck.add_card(Card.new("title", "value"))
+    @deck.add_card(Card.new("title", "value"))
     assert_equal 2, @deck.cards_count
   end
 
