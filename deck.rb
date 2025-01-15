@@ -55,7 +55,7 @@ class Deck
     end
   end
 
-  def add_card#(card) #<-- Remove the # before (card) if running testmini_2.rb
+  def add_card(card) #<-- Remove the # before (card) if running testmini_2.rb
     print "Enter card name: "
     name = gets.chomp.to_s
     name = "default" if name == 0
