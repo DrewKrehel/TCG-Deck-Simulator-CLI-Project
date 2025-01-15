@@ -21,3 +21,4 @@ class TestCard < Minitest::Test
     assert_equal "Ed", @card.match_name, "No match!"
   end
 end
+

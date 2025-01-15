@@ -60,6 +60,7 @@ class Deck
     $value = gets.chomp.to_f
     print "Enter card quantity:"
     quantity = gets.chomp.to_i
+    quantity = 1 if quantity == 0
     quantity.times do
       @cards << Card.new(name, $value)
     end
@@ -77,17 +78,21 @@ class Deck
         puts "\n"
         print "Enter card position: "
         position = gets.chomp.to_i - 1
-        puts "One copy of #{@cards.at(position)} has been removed!"
-        @cards.delete_at(position)
+        if position >= 0 && position < @cards.size
+          removed_card = @cards.delete_at(position)
+          puts "One copy of #{removed_card.title} has been removed!"
+        else
+          puts "Invalid position. Please try again."
+        end
       when 2
         print "Enter card name: "
         name = gets.chomp.downcase
-        @cards.each_with_index {|card, count|
-          if card.match_name.downcase == name
-            @cards.delete(card)
-          end
-          puts "#{name} removed from the deck #{count} times!"
-        }
+        if @cards.any? { |card| card.title.downcase == name }
+        @cards.reject! { |card| card.title.downcase == name }
+        puts "All cards with the name '#{name}' have been removed!"
+        else
+          puts "No cards with the name '#{name}' found."
+        end
       else
         puts "Invalid option. Please try again."
       end
