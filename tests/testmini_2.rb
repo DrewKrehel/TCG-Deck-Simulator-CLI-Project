@@ -15,7 +15,7 @@ class TestDeck < Minitest::Test
   #  assert_equal 2, @deck.cards_count
   #end
   
-  def test_add_card
+  def test_add_card#(card) <-- Go to deck.rb and remove the # in front of (card) to make this test work. 
     @deck = Deck.new
     @deck.add_card(Card.new("title", "value"))
     @deck.add_card(Card.new("title", "value"))
