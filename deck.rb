@@ -88,9 +88,8 @@ class Deck
           end
           puts "#{name} removed from the deck #{count} times!"
         }
-        else
-          puts "Invalid option. Please try again."
-        end
+      else
+        puts "Invalid option. Please try again."
       end
   end
 
@@ -158,7 +157,6 @@ class Deck
         puts hand
         puts "The deck has #{@cards.count} cards in it."
         break
-      end
       else
         puts "Invalid option. Please try again."
       end
