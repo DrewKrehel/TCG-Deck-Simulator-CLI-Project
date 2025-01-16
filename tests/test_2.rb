@@ -39,3 +39,5 @@ x.each {|card|
 }
 puts match
 puts match.percent_of x.count
+
+#some rANDdom changes
